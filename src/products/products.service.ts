@@ -5,8 +5,8 @@ import { Products } from './product.entity';
 
 @Injectable()
 export class ProductsService {
-    constructor(@InjectRepository(Products) private userRepository: Repository<Products>) { }
+    constructor(@InjectRepository(Products) private productRepository: Repository<Products>) { }
     async getProducts(): Promise<Products[]> {
-        return await this.userRepository.find();
+        return await this.productRepository.find();
     }
 }

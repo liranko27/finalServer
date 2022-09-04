@@ -10,6 +10,8 @@ import { ConfigModule } from '@nestjs/config'
 import { ProductsModule } from './products/products.module';
 import { Products } from './products/product.entity';
 import { OrdersController } from './orders/orders.controller';
+import { OrdersModule } from './orders/orders.module';
+import { Orders } from './orders/orders.entity';
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }),
   TypeOrmModule.forRoot({
@@ -19,10 +21,10 @@ import { OrdersController } from './orders/orders.controller';
     username: "root",
     password: process.env.DB_PASSWORD,
     database: process.env.DATABASE,
-    entities: [Customers, Products],
+    entities: [Customers, Products, Orders],
     synchronize: false
-  }), CustomersModule, ProductsModule],
-  controllers: [AppController, OrdersController],
+  }), CustomersModule, ProductsModule, OrdersModule],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule { }
