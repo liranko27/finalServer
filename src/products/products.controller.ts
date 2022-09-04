@@ -1,11 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
+import { ProductsService } from './products.service';
 
 
 @Controller('products')
 export class ProductsController {
+    constructor(private readonly productService: ProductsService) { }
     @Get()
     getAll() {
-        console.log('?')
-        return "All products"
+        return this.productService.getProducts()
     }
 }
